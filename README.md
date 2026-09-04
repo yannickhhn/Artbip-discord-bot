@@ -32,17 +32,17 @@ cd telephone-bot
 pip install -r requirements.txt
 ```
 
-Set these as environment variables (recommended, keeps secrets out of the code):
+Create a `.env` file in this folder (never commit it — it's already in `.gitignore`):
 
 ```bash
-export DISCORD_BOT_TOKEN="your-discord-token-here"
-export DISCORD_CHANNEL_IDS="123456789012345678,234567890123456789,345678901234567890"
-export DISCORD_LOG_CHANNEL_ID="456789012345678901"
-export ANTHROPIC_API_KEY="your-anthropic-key-here"
-export USE_CLASSIFIER="false"
+DISCORD_BOT_TOKEN="your-discord-token-here"
+DISCORD_CHANNEL_IDS="123456789012345678,234567890123456789,345678901234567890"
+DISCORD_LOG_CHANNEL_ID="456789012345678901"
+ANTHROPIC_API_KEY="your-anthropic-key-here"
+USE_CLASSIFIER="false"
 ```
 
-(On Windows PowerShell: `$env:DISCORD_BOT_TOKEN="..."` / `$env:DISCORD_CHANNEL_IDS="..."` / `$env:DISCORD_LOG_CHANNEL_ID="..."` / `$env:ANTHROPIC_API_KEY="..."` / `$env:USE_CLASSIFIER="..."`)
+`config.py` loads it automatically via `python-dotenv` — no manual `export`/`$env:` step needed. You can also set these as real environment variables instead if you prefer; `.env` just takes precedence-free defaults (a real env var already set will still win).
 
 - `DISCORD_CHANNEL_IDS` is a **comma-separated list** — one or many channel IDs. You can also just edit `CHANNEL_IDS` directly in `config.py` instead of using the env var.
 - `DISCORD_LOG_CHANNEL_ID` is optional — a single channel ID where the bot posts a line every time it deletes a message. Leave it unset to disable channel logging (the bot still logs to its console either way). You can also set `LOG_CHANNEL_ID` directly in `config.py`.

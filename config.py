@@ -8,6 +8,10 @@ type "started" / "finished" in each language.
 
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # --- Required settings -------------------------------------------------
 
 # Your bot token from the Discord Developer Portal.
